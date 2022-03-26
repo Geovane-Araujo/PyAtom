@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  api:
+    image: flask-rest-api
+    restart: always
+    build: .
+    container_name: api-flask
+    network_mode: host
