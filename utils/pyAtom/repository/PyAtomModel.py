@@ -2,41 +2,41 @@ from abc import ABC, abstractmethod
 class PyAtomModel(ABC):
 
     @abstractmethod
-    def id(self):
+    def __id__(self):
         pass
 
     @abstractmethod
-    def fk(self):
+    def __fk__(self):
         pass
 
     @abstractmethod
-    def listObject(self):
+    def __listObject__(self):
         pass
 
     @abstractmethod
-    def simpleObject(self):
+    def __simpleObject__(self):
         pass
 
     @abstractmethod
-    def noEntity(self):
+    def __noEntity__(self):
         pass
 
     @abstractmethod
-    def tableName(self):
+    def __tableName__(self):
         pass
 
     @abstractmethod
-    def union(self):
+    def __union__(self):
         pass
 
     @abstractmethod
-    def ignore(self):
+    def __ignore__(self):
         pass
 
     @abstractmethod
-    def alias(self):
+    def __alias__(self):
         pass
 
     @abstractmethod
-    def join(self):
+    def __join__(self):
         pass

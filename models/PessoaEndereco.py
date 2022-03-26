@@ -1,6 +1,6 @@
 from utils.pyAtom.repository.PyAtomModel import PyAtomModel
 
-class Cpf(PyAtomModel):
+class PessoaEndereco(PyAtomModel):
     def __init__(self, obj):
         self.id = obj.get("id")
         self.idpessoa = obj.get("idpessoa")
@@ -11,14 +11,14 @@ class Cpf(PyAtomModel):
         self.cep = obj.get("cep")
 
 
-    def id(self):
+    def __id__(self):
         return ["id"]
 
-    def fk(self):
+    def __fk__(self):
         return [{"idpessoa": {"pessoa": "id"}}]
 
-    def alias(self):
+    def __alias__(self):
         return [{"dataemissao": "dataemissao"}]
 
-    def tableName(self):
+    def __tableName__(self):
         return "pessoa_endereco"
