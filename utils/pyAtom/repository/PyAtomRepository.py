@@ -4,40 +4,40 @@ from abc import ABC, abstractmethod
 class PyAtomRepository(ABC):
 
     #persiste no db
-    @abstractmethod
+    @classmethod
     def save(self):
         pass
 
-    @abstractmethod
+    @classmethod
     def save(self, obj):
         pass
 
-    @abstractmethod
+    @classmethod
     def save(self, obj, db):
         pass
 
-    @abstractmethod
+    @classmethod
     def save(self, obj, con):
         pass
 
     #methods get
-    @abstractmethod
+    @classmethod
     def get(self):
         pass
 
-    @abstractmethod
+    @classmethod
     def getById(self, obj):
         pass
 
-    @abstractmethod
+    @classmethod
     def getAll(self):
         pass
 
     #execute queryes
-    @abstractmethod
+    @classmethod
     def execute(self):
         pass
 
-    @abstractmethod
+    @classmethod
     def execute(self):
         pass

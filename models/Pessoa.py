@@ -6,15 +6,15 @@ from utils.pyAtom.repository.PyAtomModel import PyAtomModel
 
 class Pessoa(PyAtomModel):
     def __init__(self, obj):
-        self.id = obj["id"]
-        self.nome = obj["nome"]
-        self.idade = obj["idade"]
-        self.idTipoPessoa = obj["idTipoPessoa"]
-        self.pessoaTelefone = PessoaTelefone(obj["pessoaTelefone"])
-        self.pessoaEndereco = PessoaEndereco(obj["pessoaEndereco"])
-        self.cpf = Cpf(obj["cpf"])
-        self.rg = Rg(obj["rg"])
-        self.descricaoTipo = obj["descricaoTipo"]
+        self.id = "" if obj.get("id") == None else obj.get("id")
+        self.nome = "" if obj.get("nome") == None else obj.get("nome")
+        self.idade = "" if obj.get("idade") == None else obj.get("idade")
+        self.idTipoPessoa = "" if obj.get("idTipoPessoa") == None else obj.get("idTipoPessoa")
+        self.pessoaTelefone = [] if obj.get("pessoaTelefone") == None else PessoaTelefone.toArray(obj.get("pessoaTelefone"))
+        self.pessoaEndereco = "" if obj.get("pessoaEndereco") == None else PessoaEndereco(obj.get("pessoaEndereco"))
+        self.cpf = "" if obj.get("cpf") == None else Cpf(obj.get("cpf"))
+        self.rg = "" if obj.get("rg") == None else Rg(obj.get("rg"))
+        self.descricaoTipo = "" if obj.get("descricaoTipo") == None else obj.get("descricaoTipo")
 
     def __id__(self):
         return ["id"]
@@ -37,12 +37,4 @@ class Pessoa(PyAtomModel):
     def __join__(self):
         return [{"descricaoTipo": "descricao"}]
 
-    def __alias__(self):
-        pass
-
-    def __noEntity__(self):
-        pass
-
-    def __union__(self):
-        pass
 
