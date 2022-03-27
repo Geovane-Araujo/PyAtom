@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class PyAtom(ABC):
+class PyAtomRepository(ABC):
 
     #persiste no db
     @abstractmethod

@@ -2,10 +2,10 @@ from utils.pyAtom.repository.PyAtomModel import PyAtomModel
 
 class Cpf(PyAtomModel):
     def __init__(self, obj):
-        self.id = obj.get("id")
-        self.cpf = obj.get("cpf")
-        self.dataemissao = obj.get("dataemissao")
-        self.idpessoa = obj.get("idpessoa")
+        self.id = obj["id"]
+        self.cpf = obj["cpf"]
+        self.dataemissao = obj["dataemissao"]
+        self.idpessoa = obj["idpessoa"]
 
     def __id__(self):
         return ["id"]

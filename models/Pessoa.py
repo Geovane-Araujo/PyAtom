@@ -6,18 +6,21 @@ from utils.pyAtom.repository.PyAtomModel import PyAtomModel
 
 class Pessoa(PyAtomModel):
     def __init__(self, obj):
-        self.id = obj.get("id")
-        self.nome = obj.get("nome")
-        self.idade = obj.get("idade")
-        self.idTipoPessoa = obj.get("idTipoPessoa")
-        self.pessoaTelefone = PessoaTelefone(obj.get("pessoaTelefone"))
-        self.pessoaEndereco = PessoaEndereco(obj.get("pessoaEndereco"))
-        self.cpf = Cpf(obj.get("cpf"))
-        self.rg = Rg(obj.get("rg"))
-        self.descricaoTipo = obj.get("descricaoTipo")
+        self.id = obj["id"]
+        self.nome = obj["nome"]
+        self.idade = obj["idade"]
+        self.idTipoPessoa = obj["idTipoPessoa"]
+        self.pessoaTelefone = PessoaTelefone(obj["pessoaTelefone"])
+        self.pessoaEndereco = PessoaEndereco(obj["pessoaEndereco"])
+        self.cpf = Cpf(obj["cpf"])
+        self.rg = Rg(obj["rg"])
+        self.descricaoTipo = obj["descricaoTipo"]
 
     def __id__(self):
         return ["id"]
+
+    def __fk__(self):
+        return [{"idTipoPessoa": {"pessoa_tipo": "id"}}]
 
     def __tableName__(self):
         return "pessoa"
@@ -30,3 +33,16 @@ class Pessoa(PyAtomModel):
 
     def __ignore__(self):
         return ["descricaoTipo"]
+
+    def __join__(self):
+        return [{"descricaoTipo": "descricao"}]
+
+    def __alias__(self):
+        pass
+
+    def __noEntity__(self):
+        pass
+
+    def __union__(self):
+        pass
+

@@ -2,13 +2,13 @@ from utils.pyAtom.repository.PyAtomModel import PyAtomModel
 
 class PessoaEndereco(PyAtomModel):
     def __init__(self, obj):
-        self.id = obj.get("id")
-        self.idpessoa = obj.get("idpessoa")
-        self.logradouro = obj.get("logradouro")
-        self.bairro = obj.get("bairro")
-        self.numero = obj.get("numero")
-        self.complemento = obj.get("complemento")
-        self.cep = obj.get("cep")
+        self.id = obj["id"]
+        self.idpessoa = obj["idpessoa"]
+        self.logradouro = obj["logradouro"]
+        self.bairro = obj["bairro"]
+        self.numero = obj["numero"]
+        self.complemento = obj["complemento"]
+        self.cep = obj["cep"]
 
 
     def __id__(self):

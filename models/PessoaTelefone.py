@@ -2,9 +2,9 @@ from utils.pyAtom.repository.PyAtomModel import PyAtomModel
 
 class PessoaTelefone(PyAtomModel):
     def __init__(self, obj):
-        self.id = obj.get("id")
-        self.idpessoa = obj.get("idpessoa")
-        self.telefone = obj.get("telefone")
+        self.id = obj["id"]
+        self.idpessoa = obj["idpessoa"]
+        self.telefone = obj["telefone"]
 
     def __id__(self):
         return ["id"]

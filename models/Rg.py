@@ -2,10 +2,10 @@ from utils.pyAtom.repository.PyAtomModel import PyAtomModel
 
 class Rg(PyAtomModel):
     def __init__(self, obj):
-        self.id = obj.get("id")
-        self.rg = obj.get("rg")
-        self.dataemissao = obj.get("dataemissao")
-        self.idpessoa = obj.get("idpessoa")
+        self.id = obj["id"]
+        self.rg = obj["rg"]
+        self.dataemissao = obj["dataemissao"]
+        self.idpessoa = obj["idpessoa"]
 
     def __id__(self):
         return ["id"]
