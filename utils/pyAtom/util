@@ -1,1 +1,10 @@
 https://medium.com/analytics-vidhya/how-to-create-a-python-library-7d5aea80cc3f
+
+#conexão com sqlserver
+pip install pymssql
+
+#conexao com postgres
+pip install py-postgresql
+
+#conexao com mysql
+pip install mysql-connector

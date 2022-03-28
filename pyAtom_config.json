@@ -1,0 +1,15 @@
+{
+  "app_name": "apiAtom",
+  "generate_models": true,
+  "generate_handler": true,
+  "generate_controllers": true,
+  "connection_db": {
+    "db": "MSSQL",
+    "url": "localhost",
+    "port": 1433,
+    "db_name": "py_atom",
+    "password": "553322@@##",
+    "user": "sa",
+    "multtenant": false
+  }
+}

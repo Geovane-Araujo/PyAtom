@@ -1,9 +1,11 @@
 from flask import Flask
 from controllers.pessoa import pessoacontroller
+from utils.pyAtom.models.GlobalVariables import ConfigPyAtom
 
 app = Flask(__name__)
 
-
+ConfigPyAtom.path_properties = app.root_path + "/pyAtom_config.json"
+ConfigPyAtom.path_jdbc = app.root_path + "/libsconn/mssql.jar"
 
 @app.route('/')
 def hello_world():
