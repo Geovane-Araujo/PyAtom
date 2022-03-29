@@ -8,7 +8,7 @@ class PessoaTelefone(PyAtomModel):
 
 
     def __id__(self):
-        return ["id"]
+        return "id"
 
     def __fk__(self):
         return [{"idpessoa": {"pessoa": "id"}}]

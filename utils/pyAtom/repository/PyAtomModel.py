@@ -4,35 +4,35 @@ class PyAtomModel(ABC):
 
     @classmethod
     def __id__(self):
-        pass
+        return ""
 
     @classmethod
     def __fk__(self):
-        pass
+        return []
 
     @classmethod
     def __listObject__(self):
-        pass
+        return []
 
     @classmethod
     def __simpleObject__(self):
-        pass
+        return []
 
     @classmethod
     def __noEntity__(self):
-        pass
+        return False
 
     @classmethod
     def __tableName__(self):
-        pass
+        return ""
 
     @classmethod
     def __union__(self):
-        pass
+        return ""
 
     @classmethod
     def __ignore__(self):
-        pass
+        return []
 
     @classmethod
     def __alias__(self):

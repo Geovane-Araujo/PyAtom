@@ -17,7 +17,7 @@ class Pessoa(PyAtomModel):
         self.descricaoTipo = "" if obj.get("descricaoTipo") == None else obj.get("descricaoTipo")
 
     def __id__(self):
-        return ["id"]
+        return "id"
 
     def __fk__(self):
         return [{"idTipoPessoa": {"pessoa_tipo": "id"}}]

@@ -8,7 +8,7 @@ class Cpf(PyAtomModel):
         self.idpessoa = "" if obj.get("idpessoa") == None else obj.get("idpessoa")
 
     def __id__(self):
-        return ["id"]
+        return "id"
 
     def __fk__(self):
         return [{"idpessoa": {"pessoa": "id"}}]
