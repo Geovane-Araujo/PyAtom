@@ -2,6 +2,7 @@ import json
 
 import jaydebeapi
 
+
 from utils.pyAtom.models.GlobalVariables import ConfigPyAtom
 
 
@@ -43,5 +44,8 @@ def py_mysql_connect(config):
     return con
 
 def config_read(config):
+
     with open(config, 'r', encoding='utf8') as f:
         return json.load(f)
+
+
