@@ -68,16 +68,34 @@ def operationPercistence(obj,con,type):
         fields = vars(obj)
 
         for field in fields:
-            if not no_entity:
-                column_id = fields[field].__id__()
-            else:
-                column_id = fields[field].__id__()
 
+            if field in obj.__simpleObject__():
+                if not no_entity:
+                    column_id = fields[field].__id__()
+                else:
+                    column_id = list(obj.__fk__()[0][field].keys())[0]
+
+                fk = list(fields[field].__fk__()[0])[0]
+                vars(fields[field])[fk] = id
+
+                operationPercistence(fields[field],con,type)
+            elif field in obj.__listObject__():
+
+                for lifield in vars(obj)[field]:
+
+                    li_fields = vars(lifield)
+                    if not no_entity:
+                        column_id = lifield.__id__()
+                    else:
+                        column_id = list(lifield.__fk__()[0].keys())[0]
+
+                    fk = list(lifield.__fk__()[0])[0]
+                    li_fields[fk] = id
+                    operationPercistence(lifield, con, type)
 
         recurse = False
 
-
-    return None
+    return obj
 
 def constructorCommand(obj, type):
     sql = ""
