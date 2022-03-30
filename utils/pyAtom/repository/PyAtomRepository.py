@@ -14,7 +14,7 @@ class PyAtomRepository(ABC):
                 operationPercistence(obj[0],con,0 )
             else:
                 operationPercistence(obj[0], con,1)
-
+            return obj[0]
         except Exception as er:
             ret = {
                 "error": er
@@ -56,6 +56,7 @@ def operationPercistence(obj,con,type):
         cursor.execute(exec[0],exec[1])
         cursor.execute(f"select max({obj.__id__()}) FROM {exec[2]}")
         id = cursor.fetchone()[0]
+        vars(obj)[obj.__id__()] = id
         cursor.close()
     else:
         id = vars(obj)[obj.__id__()]
