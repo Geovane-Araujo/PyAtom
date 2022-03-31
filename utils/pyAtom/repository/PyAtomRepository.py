@@ -7,9 +7,12 @@ class PyAtomRepository(ABC):
     @classmethod
     def save(self, *obj):
         fieldIdentifier = obj[0].__id__()
-
+        con = None
         try:
-            con = connect_db()
+            if len(obj) > 1:
+                con = connect_db(obj[1])
+            else:
+                con = connect_db()
             if vars(obj[0])[fieldIdentifier] == '':
                 operationPercistence(obj[0],con,0 )
             else:
