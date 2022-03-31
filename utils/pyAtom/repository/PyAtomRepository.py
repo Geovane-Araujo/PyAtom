@@ -17,8 +17,11 @@ class PyAtomRepository(ABC):
                 operationPercistence(obj[0],con,0 )
             else:
                 operationPercistence(obj[0], con,1)
+
+            con.commit()
             return obj[0]
         except Exception as er:
+            con.rollback()
             ret = {
                 "error": er
             }

@@ -4,12 +4,36 @@
   "generate_handler": true,
   "generate_controllers": true,
   "connection_db": {
-    "db": "MSSQL",
+    "db": "POSTGRES",
     "url": "localhost",
-    "port": 1433,
+    "port": 5432,
     "db_name": "py_atom",
     "password": "553322@@##",
-    "user": "sa",
+    "user": "postgres",
     "multtenant": false
-  }
+  },
+  "secundary_connections": [
+    {
+      "connection_db": {
+        "db": "MSSQL",
+        "url": "localhost",
+        "port": 1433,
+        "db_name": "py_atom",
+        "password": "553322@@##",
+        "user": "sa",
+        "multtenant": false
+      }
+    },
+    {
+      "connection_db": {
+        "db": "MYSQL",
+        "url": "localhost",
+        "port": 3306,
+        "db_name": "py_atom",
+        "password": "553322@@##",
+        "user": "root",
+        "multtenant": false
+      }
+    }
+  ]
 }
