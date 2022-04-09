@@ -1,5 +1,9 @@
 from abc import ABC
+
+from utils.pyAtom.connection import py_connect
 from utils.pyAtom.connection.py_connect import connect_db
+from utils.pyAtom.models.GlobalVariables import ConfigPyAtom
+
 
 class PyAtomRepository(ABC):
 
@@ -22,10 +26,7 @@ class PyAtomRepository(ABC):
             return obj[0]
         except Exception as er:
             con.rollback()
-            ret = {
-                "error": er
-            }
-            return ret
+            raise Exception(er)
 
     #methods get
     @classmethod
@@ -60,7 +61,10 @@ def operationPercistence(obj,con,type):
         exec = constructorCommand(obj, type)
         cursor = con.cursor()
         cursor.execute(exec[0],exec[1])
-        cursor.execute(f"select max({obj.__id__()}) FROM {exec[2]}")
+        if (ConfigPyAtom.schema):
+            cursor.execute(f'select max({obj.__id__()}) FROM "{ConfigPyAtom.schema_name}".{exec[2]}')
+        else:
+            cursor.execute(f"select max({obj.__id__()}) FROM {exec[2]}")
         id = cursor.fetchone()[0]
         vars(obj)[obj.__id__()] = id
         cursor.close()
@@ -131,7 +135,10 @@ def constructorCommand(obj, type):
                 values_cor += "?,"
                 values_var.append(vars(obj)[k])
 
-        sql = f'INSERT INTO {obj_tableName}({obj_columns[:-1]}) VALUES({values_cor[:-1]})'
+        if(ConfigPyAtom.schema):
+            sql = f'INSERT INTO "{ConfigPyAtom.schema_name}".{obj_tableName}({obj_columns[:-1]}) VALUES({values_cor[:-1]})'
+        else:
+            sql = f'INSERT INTO {obj_tableName}({obj_columns[:-1]}) VALUES({values_cor[:-1]})'
         return [sql, values_var,obj_tableName]
 
     else:
@@ -154,7 +161,10 @@ def constructorCommand(obj, type):
                 value_id = vars(obj)[k]
 
         values_var.append(value_id)
-        sql = f'UPDATE {obj_tableName} SET {obj_columns[:-1]} WHERE {obj.__id__()} = ?)'
+        if (ConfigPyAtom.schema):
+            sql = f'UPDATE "{ConfigPyAtom.schema_name}".{obj_tableName} SET {obj_columns[:-1]} WHERE {obj.__id__()} = ?)'
+        else:
+            sql = f'UPDATE {obj_tableName} SET {obj_columns[:-1]} WHERE {obj.__id__()} = ?)'
         return [sql, values_var, obj_tableName]
 
 

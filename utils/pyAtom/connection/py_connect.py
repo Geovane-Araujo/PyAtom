@@ -6,10 +6,15 @@ import jaydebeapi
 from utils.pyAtom.models.GlobalVariables import ConfigPyAtom
 
 
+
 def connect_db(*args):
     config = config_read(ConfigPyAtom.path_properties)
     if len(args) > 0:
         config['connection_db']['db_name'] = args[0]
+
+    if(config.get("connection_db").get("schema") != None):
+        ConfigPyAtom.schema = True
+        ConfigPyAtom.schema_name = config.get("connection_db").get("schema")
 
     if config.get("connection_db").get("db") == "MYSQL":
         return py_mysql_connect(config.get("connection_db"))

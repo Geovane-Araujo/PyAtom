@@ -4,12 +4,13 @@
   "generate_handler": true,
   "generate_controllers": true,
   "connection_db": {
-    "db": "POSTGRES",
-    "url": "localhost",
-    "port": 5432,
-    "db_name": "py_atom",
-    "password": "553322@@##",
-    "user": "postgres",
+    "db": "MSSQL",
+    "url": "wdb4.my-hosting-panel.com",
+    "port": 1433,
+    "db_name": "plantont_casa_full",
+    "schema": "tca_tco",
+    "password": "AD553322@@##",
+    "user": "plantont_admin",
     "multtenant": false
   },
   "secundary_connections": [
@@ -34,6 +35,15 @@
         "user": "root",
         "multtenant": false
       }
+    },
+    {
+      "db": "POSTGRES",
+      "url": "localhost",
+      "port": 5432,
+      "db_name": "py_atom",
+      "password": "553322@@##",
+      "user": "postgres",
+      "multtenant": false
     }
   ]
 }

@@ -11,5 +11,5 @@ pessoacontroller = Blueprint("cnpjcontroller",__name__, template_folder="control
 def save():
     obj = request.get_json()
     obj_pessoa = Pessoa(obj)
-    PessoaImpl.save(obj_pessoa)
+    ret = PessoaImpl.save(obj_pessoa)
     return Pessoa.toJson(obj_pessoa)
